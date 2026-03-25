@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Card = ({ playerData }) => {
+const Card = ({ playerData,setCoin,coin,selectedPlayers, setselectedPlayers }) => {
+
+
+    const[isSelected,setisSelected]= useState(false);
+
+const handlePlayer = (e) => {
+      e.preventDefault();
+  let newCoin = coin - playerData.price;
+
+  if (newCoin < 0) {
+    alert("Not enough funds");
+    setisSelected(false); 
+    return;
+  }
+
+  setCoin(newCoin);
+  setisSelected(true);
+  alert(`${playerData.playerName} is Selected`);
+  setselectedPlayers([...selectedPlayers,playerData])
+
+
+}
+
+
     return (
-        <div className="card bg-base-100 w-96 shadow-sm">
+        <div className="card bg-base-100 w-96 shadow-sm">               
             <figure>
                 <img
                     src={playerData.playerImage}
@@ -41,7 +64,7 @@ const Card = ({ playerData }) => {
 
                 <div className="flex justify-between items-center mt-2">
                     <span className='font-bold text-lg'>${playerData.price.toLocaleString()}</span>
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button onClick={(e) => handlePlayer(e)} disabled={isSelected} className="btn btn-primary">{isSelected===false ? "Buy Now":"Selected"}</button>
                 </div>
             </div>
         </div>

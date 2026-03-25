@@ -1,14 +1,15 @@
 import React from 'react';
 import dollarImg from '../../assets/dollar_1.png'
-const Navbar = () => {
+import logoImg from '../../assets/logo.png'
+const Navbar = ({coin}) => {
     return (
         <div>
   <div class="navbar bg-base-100 shadow-sm">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl">daisyUI</a>
+   <img src={logoImg} alt="" />
   </div>
   <div class="flex items-center gap-2 font-bold text-xl">
-    0 Coins
+    {coin} Coins
     <img src={dollarImg} alt="" />
   </div>
 </div>

@@ -1,21 +1,23 @@
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import './App.css'
 import Players from './components/Homepage/Players/Players'
 import Navbar from './components/navbar/Navbar'
 
-const fetchPlayer = async () => {
+const playerPromise = fetchPlayer() // ✅ move outside
+
+async function fetchPlayer() {
   const res = await fetch("/player.json")
   return res.json()
 }
 
 function App() {
-  const playerPromise = fetchPlayer()
+  const [coin, setCoin] = useState(5000000000)
   
   return (
     <>
-      <Navbar />
-      <Suspense fallback={<span class="loading loading-spinner loading-xl"></span>}>
-        <Players playerPromise={playerPromise}></Players>
+      <Navbar coin={coin}/>
+      <Suspense fallback={<span className="loading loading-spinner loading-xl"></span>}>
+        <Players playerPromise={playerPromise} setCoin={setCoin} coin={coin}/>
       </Suspense>
     </>
   )
