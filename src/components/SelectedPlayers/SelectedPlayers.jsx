@@ -14,7 +14,12 @@ const SelectedPlayers = ({selectedPlayers,setselectedPlayers, coin,setCoin}) => 
     return (
         <div>
             {
-                selectedPlayers.map(select=>{
+              selectedPlayers.length===0 ?
+              <div className='flex justify-center items-center h-[600px]  gap-6 flex-col'>
+                <h3>NO DATA</h3>
+                <p>GO BACK</p>
+              </div>
+              :selectedPlayers.map(select=>{
                     return(
                         <div className='flex items-center justify-between gap-6 p-10 rounded-2xl border my-3'>
                             <div className='flex gap-3'>

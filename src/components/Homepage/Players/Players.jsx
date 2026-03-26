@@ -5,7 +5,7 @@ import SelectedPlayers from '../../SelectedPlayers/SelectedPlayers';
 const Players = ({playerPromise, setCoin, coin}) => {
     const playerData = use(playerPromise)
     const [selectedType, setselectedType] = useState("Available")
-    const [selectedPlayers, setselectedPlayers] = useState([])  // ✅ fixed
+    const [selectedPlayers, setselectedPlayers] = useState([])  
    
     return (
         <div className='container mx-auto'>
@@ -15,11 +15,11 @@ const Players = ({playerPromise, setCoin, coin}) => {
              <h2 className='text-bold text-5xl'>Selected Players({selectedPlayers.length}/{playerData.length})</h2>}
             <div>
                 <button onClick={() => setselectedType("Available")} 
-                  className={`btn ${selectedType === "Available" ? "bg-[#E7FE29]" : "btn-outline"}`}>  {/* ✅ fixed */}
+                  className={`btn ${selectedType === "Available" ? "bg-[#E7FE29]" : "btn-outline"}`}>  
                   Available
                 </button>
                 <button onClick={() => setselectedType("Selected")} 
-                  className={`btn ${selectedType === "Selected" ? "bg-[#E7FE29]" : "btn-outline"}`}>  {/* ✅ fixed */}
+                  className={`btn ${selectedType === "Selected" ? "bg-[#E7FE29]" : "btn-outline"}`}> 
                   Selected({selectedPlayers.length})
                 </button>
             </div>

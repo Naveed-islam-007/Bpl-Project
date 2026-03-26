@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Card = ({ playerData,setCoin,coin,selectedPlayers, setselectedPlayers }) => {
 
@@ -10,14 +11,15 @@ const handlePlayer = (e) => {
   let newCoin = coin - playerData.price;
 
   if (newCoin < 0) {
-    alert("Not enough funds");
+   
+   toast.error(`Not nough funds!`)
     setisSelected(false); 
     return;
   }
 
   setCoin(newCoin);
   setisSelected(true);
-  alert(`${playerData.playerName} is Selected`);
+ toast.success(`${playerData.playerName} is Selected`)
   setselectedPlayers([...selectedPlayers,playerData])
 
 
